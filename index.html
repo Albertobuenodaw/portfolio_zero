@@ -3,9 +3,37 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio · Dev Senior</title>
+<title>Portfolio · abuenodev</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/utils.css">
+<link rel="stylesheet" href="css/cursor.css">
+
 <style>
+
+    :root {
+  --bg: #0b0b0b;
+  --text: #eaeaea;
+  --muted: #a1a1a1;
+}
+
+body.light {
+  --bg: #f7f7f7;
+  --text: #111;
+  --muted: #444;
+}
+
+/* usa siempre las variables */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
 :root{
   --bg:#0b0b0b;
   --panel:#111213;
@@ -16,15 +44,6 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{
-  margin:0;
-  background:
-    radial-gradient(900px 500px at 10% -10%, rgba(255,255,255,.06), transparent 60%),
-    radial-gradient(800px 400px at 90% 0%, rgba(99,102,241,.08), transparent 55%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;
-}
 .container{max-width:1200px;margin:0 auto;padding:24px 16px}
 .nav{
   position:sticky;top:12px;z-index:50;
@@ -188,53 +207,6 @@ body{
   transform:translateY(-6px) scale(.98);
   transition:opacity .35s ease, transform .35s ease;
 }
-.brand{position:relative}
-.bubble{
-  position:absolute;
-  top:-10px;
-  left:48px;
-  padding:6px 12px;
-  border-radius:999px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-  color:#fff;
-  font-weight:700;
-  font-size:13px;
-  line-height:1;
-  box-shadow:0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
-  pointer-events:none;
-  white-space:nowrap;
-  opacity:0;
-  animation:bubbleIn .42s cubic-bezier(.2,.8,.2,1) forwards, bubbleSway 3.4s ease-in-out .42s infinite;
-}
-.bubble::after{
-  content:"";
-  position:absolute;
-  left:-6px;
-  top:50%;
-  width:10px;height:10px;
-  transform:translateY(-50%) rotate(45deg);
-  background:rgba(255,255,255,.08);
-  border-left:1px solid rgba(255,255,255,.14);
-  border-bottom:1px solid rgba(255,255,255,.14);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
-}
-@keyframes bubbleIn{
-  0%{opacity:0;transform:translateY(8px) scale(.92) rotate(-2deg)}
-  45%{opacity:1;transform:translateY(-3px) scale(1.03) rotate(.8deg)}
-  100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}
-}
-@keyframes bubbleSway{
-  0%{transform:translateY(0) rotate(-1.2deg)}
-  33%{transform:translateY(-1.5px) rotate(.8deg)}
-  66%{transform:translateY(.8px) rotate(-.6deg)}
-  100%{transform:translateY(0) rotate(.6deg)}
-}
-.bubble.hide{
-  opacity:0;
-  transform:translateY(-6px) scale(.98);
-  transition:opacity .35s ease, transform .35s ease;
-}
 
 
 /*Estilos de cursor*/
@@ -288,10 +260,10 @@ body{
     <div class="cursor-dot"></div>
 
   <div class="container">
-    <nav class="nav">
+    <nav class="navbar">
       <div class="brand">
         <div class="logo">🧠</div>
-        <span>Dev Senior</span>
+        <span>abuenodev</span>
       </div>
       <div class="menu" id="menu">
         <a href="#">Inicio</a>
@@ -301,6 +273,9 @@ body{
         <a href="#">Contacto</a>
       </div>
       <div class="actions">
+        <button class="pill pill-ghost" id="themeToggle" aria-label="Cambiar modo" title="Cambiar modo">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
         <a class="pill pill-ghost like" href="#" id="likeBtn" aria-pressed="false"><span class="star" aria-hidden="true">★</span><span id="likeCount">0</span></a>
         <a class="pill pill-primary" href="#">Contactar</a>
         <button class="hamb" id="hamb" aria-label="Abrir menú">
@@ -425,7 +400,7 @@ body{
     </section>
 
     <footer class="footer">
-      © 2025 Dev Senior · Disponible para proyectos
+      © 2025 abuenodev · Disponible para proyectos
     </footer>
 
     <div class="mobile" id="mobileMenu" hidden>
@@ -533,4 +508,20 @@ document.querySelectorAll('a, button, [role="button"], input, textarea, select, 
     dot.classList.remove('active');
   });
 });
+</script>
+
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  
+  if (document.body.classList.contains('light')) {
+    themeIcon.textContent = '☀️';
+  } else {
+    themeIcon.textContent = '🌙';
+  }
+});
+
 </script>

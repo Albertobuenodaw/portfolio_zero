@@ -1,0 +1,41 @@
+:root {
+  --bg: #f4f4f4;
+  --panel: #fff;
+  --text: #222;
+  --muted: #666;
+  --primary: #0077b5;
+  --icon: #222;
+}
+
+body.light {
+  --bg: #f4f4f4;
+  --panel: #fff;
+  --text: #222;
+  --muted: #666;
+  --primary: #0077b5;
+  --icon: #222;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body.dark {
+  --bg: #0b0b0b;
+  --panel: #111213;
+  --text: #eaeaea;
+  --muted: #a1a1a1;
+  --primary: #60a5fa;
+  --icon: #eaeaea;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h2 {
+  color: var(--primary);
+  margin-top: 0;
+}
