@@ -1,0 +1,33 @@
+/* Hero con avatar (solo no-mobile) */
+.hero-avatar {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  .hero-avatar {
+    display: grid;
+    place-items: center;
+    gap: 12px;
+    margin: 28px auto 8px;
+    max-width: 900px;
+    text-align: center;
+  }
+  .hero-avatar-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,.15);
+    box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    background: #ccc;
+  }
+  .hero-avatar h2 {
+    margin: 6px 0 0 0;
+    font-size: 22px;
+  }
+  .hero-avatar p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+}

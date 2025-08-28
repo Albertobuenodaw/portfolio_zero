@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio · abuenodev</title>
+<title> abuenodev </title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/navbar.css">
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="css/cards.css">
 <link rel="stylesheet" href="css/utils.css">
 <link rel="stylesheet" href="css/cursor.css">
+<link rel="stylesheet" href="css/hero.css">
 
 <style>
 
@@ -44,6 +46,7 @@ body {
 }
 *{box-sizing:border-box}
 html,body{height:100%}
+html{scroll-behavior:smooth}
 .container{max-width:1200px;margin:0 auto;padding:24px 16px}
 .nav{
   position:sticky;top:12px;z-index:50;
@@ -95,7 +98,7 @@ html,body{height:100%}
   display:grid;
   grid-template-columns:1fr;
   gap:18px;
-  margin-top:18px
+  margin:60px 0;
 }
 @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1120px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -208,6 +211,9 @@ html,body{height:100%}
   transition:opacity .35s ease, transform .35s ease;
 }
 
+.hamb{
+  color : rgb(224, 223, 223);
+}
 
 /*Estilos de cursor*/
 
@@ -252,6 +258,271 @@ html,body{height:100%}
   background: #00ffe1cb;
 }
 
+/* Estilos para el timeline del currículum */
+.cv-section {
+  margin: 60px auto;
+  max-width: 800px;
+}
+
+.cv-section h2 {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 40px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.download-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.download-icon:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  opacity: 1;
+}
+
+.download-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #22d3ee, #a78bfa);
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #22d3ee, #a78bfa);
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.3);
+  z-index: 2;
+  transition: all 0.4s ease-in-out;
+}
+
+.timeline-item:last-child::before {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+}
+
+.timeline-item:hover::before {
+  background: #00ffff;
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.timeline-content {
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.08);
+  transition: transform 1.4s ease-in-out, box-shadow 1.4s ease-in-out;
+}
+
+.timeline-content:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.timeline-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+.timeline-company {
+  font-size: 16px;
+  font-weight: 600;
+  color: #22d3ee;
+  margin: 0;
+}
+
+.timeline-duration {
+  font-size: 14px;
+  color: var(--muted);
+  background: rgba(255,255,255,.05);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.timeline-description {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.timeline-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-achievements li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.timeline-achievements li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #22d3ee;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 30px;
+  }
+  
+  .timeline::before {
+    left: 15px;
+  }
+  
+  .timeline-item {
+    padding-left: 20px;
+  }
+  
+  .timeline-item::before {
+    left: -6px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Estilos para botones sociales */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.02);
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.social-btn:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.2);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+}
+
+.social-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.social-btn.linkedin:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.social-btn.github:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+/* Efecto arcoíris sutil para el texto del footer */
+.rainbow-text {
+  background: linear-gradient(
+    90deg,
+    #eaeaea,
+    #22d3ee,
+    #a78bfa,
+    #eaeaea
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-flow 8s ease-in-out infinite;
+  font-weight: 500;
+}
+
+@keyframes rainbow-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -266,13 +537,23 @@ html,body{height:100%}
         <span>abuenodev</span>
       </div>
       <div class="menu" id="menu">
-        <a href="#">Inicio</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Servicios</a>
-        <a href="#">Blog</a>
-        <a href="#">Contacto</a>
+        <a href="#inicio">Inicio</a>
+<!--    <a href="#">Proyectos</a> -->
+<!--    <a href="#">Servicios</a> -->
+<!--    <a href="#">Blog</a> -->
+        <a href="#experiencia">Experiencia</a>
       </div>
       <div class="actions">
+        <a class="social-btn linkedin" href="https://linkedin.com/in/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a class="social-btn github" href="https://github.com/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
         <button class="pill pill-ghost" id="themeToggle" aria-label="Cambiar modo" title="Cambiar modo">
           <span id="themeIcon" aria-hidden="true">🌙</span>
         </button>
@@ -284,12 +565,20 @@ html,body{height:100%}
       </div>
     </nav>
 
-    <header class="hero">
+    <!--
+    <section class="hero-avatar" aria-label="Presentación con avatar">
+      <img class="hero-avatar-img" src="img/avatar.jpg" alt="Tu foto de perfil" />
+    </section>
+    -->
+
+    <header class="hero" id="inicio">
       <h1>Construyo productos web rápidos, accesibles y con cariño por los detalles</h1>
       <p>Desarrollador full-stack especializado en front-end de alto rendimiento, diseño de sistemas y DX. Disponible para proyectos selectos y consultoría.</p>
     </header>
 
+    <!-- Sección de proyectos destacados -->
     <section class="grid">
+      <!-- Proyecto FinTech - Dashboard de pagos -->
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -308,6 +597,7 @@ html,body{height:100%}
         </div>
       </article>
 
+      <!-- Proyecto IA - Suite de agentes -->
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -326,6 +616,7 @@ html,body{height:100%}
         </div>
       </article>
 
+      <!-- Proyecto CMS - Headless con edición in situ -->
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -344,6 +635,8 @@ html,body{height:100%}
         </div>
       </article>
 
+      <!-- Proyecto Design System - Sistema de diseño -->
+      <!--
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -361,7 +654,10 @@ html,body{height:100%}
           </div>
         </div>
       </article>
+      -->
 
+      <!-- Proyecto eCommerce - Plataforma headless -->
+      <!--
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -379,7 +675,10 @@ html,body{height:100%}
           </div>
         </div>
       </article>
+      -->
 
+      <!-- Proyecto Analytics - Dashboards de datos -->
+      <!--
       <article class="card">
         <div class="card-media"></div>
         <div class="card-body">
@@ -397,18 +696,102 @@ html,body{height:100%}
           </div>
         </div>
       </article>
+      -->
+    </section>
+
+    <!-- Sección de currículum profesional -->
+    <section class="cv-section" id="experiencia">
+      <h2>Experiencia Profesional 
+        <a href="#" class="download-icon" aria-label="Descargar CV" title="Descargar CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7,10 12,15 17,10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </a>
+      </h2>
+      <div class="timeline">
+        <!-- Primer trabajo - Frontend Developer -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Frontend Developer</h3>
+                <p class="timeline-company">TechFlow Solutions</p>
+              </div>
+              <span class="timeline-duration">2021 - 2022</span>
+            </div>
+            <p class="timeline-description">
+              Desarrollo de interfaces de usuario para aplicaciones web modernas, enfocándome en la creación de componentes reutilizables y la optimización del rendimiento.
+            </p>
+            <ul class="timeline-achievements">
+              <li>Desarrollé 15+ componentes React reutilizables que redujeron el tiempo de desarrollo en 40%</li>
+              <li>Implementé lazy loading y code splitting, mejorando el tiempo de carga inicial en 60%</li>
+              <li>Colaboré en el diseño de un sistema de design tokens que unificó la experiencia visual</li>
+              <li>Mentoré a 2 desarrolladores junior en mejores prácticas de frontend</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Segundo trabajo - Senior Frontend Developer -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Senior Frontend Developer</h3>
+                <p class="timeline-company">InnovateLab</p>
+              </div>
+              <span class="timeline-duration">2022 - 2023</span>
+            </div>
+            <p class="timeline-description">
+              Lideré el desarrollo frontend de productos SaaS complejos, comenzando a especializarme en UX y trabajando estrechamente con equipos de diseño.
+            </p>
+            <ul class="timeline-achievements">
+              <li>Arquitecturé y desarrollé el frontend de una plataforma SaaS con 50k+ usuarios activos</li>
+              <li>Implementé un sistema de A/B testing que aumentó las conversiones en 25%</li>
+              <li>Diseñé y desarrollé un design system completo con Storybook y documentación</li>
+              <li>Colaboré con UX designers en research y testing de usabilidad</li>
+              <li>Optimicé la accesibilidad web, alcanzando WCAG 2.1 AA compliance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tercer trabajo - Frontend Lead & UX Specialist -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Frontend Lead & UX Specialist</h3>
+                <p class="timeline-company">DigitalCraft Studio</p>
+              </div>
+              <span class="timeline-duration">2023 - Presente</span>
+            </div>
+            <p class="timeline-description">
+              Lidero equipos de desarrollo frontend mientras me especializo en UX, combinando habilidades técnicas con insights de usuario para crear productos excepcionales.
+            </p>
+            <ul class="timeline-achievements">
+              <li>Lidero un equipo de 5 desarrolladores frontend en proyectos de alto impacto</li>
+              <li>Conduzco sesiones de user research y testing de usabilidad</li>
+              <li>Diseñé la arquitectura de micro-frontends que escaló a 100k+ usuarios</li>
+              <li>Implementé métricas de UX que mejoraron la satisfacción del usuario en 35%</li>
+              <li>Creé workshops internos sobre UX/UI para equipos de desarrollo</li>
+              <li>Desarrollé prototipos interactivos en Figma y Framer para validación rápida</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
-      © 2025 abuenodev · Disponible para proyectos
+      © 2025 abuenodev · <span class="rainbow-text">En búsqueda activa</span>
     </footer>
 
     <div class="mobile" id="mobileMenu" hidden>
-      <a href="#">Inicio</a>
+      <a href="#inicio">Inicio</a>
       <a href="#">Proyectos</a>
       <a href="#">Servicios</a>
       <a href="#">Blog</a>
-      <a href="#">Contacto</a>
+      <a href="#experiencia">Experiencia</a>
     </div>
   </div>
 
