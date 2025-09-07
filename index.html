@@ -16,6 +16,10 @@
 
 <style>
 
+  .card-media{position:relative;min-height:170px;background:#0e0f10;border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
+  .card-media .stars-rain{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;mix-blend-mode:screen;opacity:.9}
+
+
     :root {
   --bg: #0b0b0b;
   --text: #eaeaea;
@@ -625,8 +629,8 @@ body.light .hamb:hover {
   }
 }
 
-@media(max-width: 530px){
-  .navbar{min-width:440px}
+@media(max-width: 700px){
+  .navbar{min-width:460px; padding: 10px;}
   article{min-width:450px;}
 }
 
@@ -656,8 +660,10 @@ display:none;
   <div class="container">
     <nav class="navbar">
       <div class="brand">
-        <div class="logo">🧠</div>
-        <span>albertobuenox</span>
+        <a href ="#inicio">
+          <div class="logo">🧠</div>
+          <span>albertobuenox</span>
+        </a>
       </div>
       <div class="menu" id="menu">
         <a href="#inicio">Inicio</a>
@@ -706,7 +712,9 @@ display:none;
     <section class="grid">
       <!-- Proyecto FinTech - Dashboard de pagos -->
       <article class="card">
-        <div class="card-media"></div>
+        <div class="card-media">
+          <canvas class="stars-rain"></canvas>
+        </div>
         <div class="card-body">
           <div class="card-title">
             <h3>AtlasPay Dashboard</h3>
@@ -722,6 +730,7 @@ display:none;
           </div>
         </div>
       </article>
+
 
       <!-- Proyecto IA - Suite de agentes -->
       <article class="card">
@@ -912,7 +921,7 @@ display:none;
       © 2025 albertobuenox · <span class="rainbow-text">En búsqueda activa</span>
     </footer>
 
-    <div class="mobile" id="mobileMenu" hidden>
+    <div class="mobile" id="mobileMenu" style="display: none;">
       <a href="#inicio">Inicio</a>
       <a href="#">Proyectos</a>
       <a href="#">Servicios</a>
@@ -921,11 +930,6 @@ display:none;
     </div>
   </div>
 
-<script>
-const hamb=document.getElementById('hamb');
-const mobile=document.getElementById('mobileMenu');
-hamb.addEventListener('click',()=>{const v=mobile.hasAttribute('hidden');mobile.toggleAttribute('hidden');if(v){mobile.scrollIntoView({block:'start',behavior:'smooth'})}});
-</script>
 
 
 <script>
@@ -1033,4 +1037,73 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
+</script>
+
+
+<script>
+const dpr=window.devicePixelRatio||1;
+function initStars(canvas){
+  const ctx=canvas.getContext('2d');
+  const parent=canvas.parentElement;
+  function size(){
+    const {width,height}=parent.getBoundingClientRect();
+    canvas.width=width*dpr;
+    canvas.height=height*dpr;
+    canvas.style.width=width+'px';
+    canvas.style.height=height+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  size();
+  const stars=[];
+  const palette=[
+    'rgba(255,255,255,0.9)',
+    'rgba(167,139,250,0.9)',
+    'rgba(34,211,238,0.9)',
+    'rgba(236,72,153,0.85)'
+  ];
+  const count=Math.max(40,Math.floor(canvas.width*canvas.height/9000/dpr));
+  for(let i=0;i<count;i++){
+    stars.push({
+      x:Math.random()*canvas.width/dpr,
+      y:Math.random()*canvas.height/dpr,
+      r:Math.random()*1.6+0.4,
+      vy:Math.random()*1.2+0.6,
+      vx:(Math.random()-.5)*0.3,
+      a:Math.random()*Math.PI*2,
+      color:palette[(Math.random()*palette.length)|0]
+    });
+  }
+  let last=0;
+  function tick(ts){
+    if(!last) last=ts;
+    const dt=Math.min(32,ts-last)/16.6667;
+    last=ts;
+    ctx.clearRect(0,0,canvas.width/dpr,canvas.height/dpr);
+    for(const s of stars){
+      s.y+=s.vy*dt;
+      s.x+=s.vx*dt;
+      s.a+=0.05*dt;
+      if(s.y-s.r>canvas.height/dpr){s.y=-s.r; s.x=Math.random()*canvas.width/dpr;}
+      if(s.x<-5) s.x=canvas.width/dpr+5;
+      if(s.x>canvas.width/dpr+5) s.x=-5;
+      ctx.globalAlpha=0.85+0.15*Math.sin(s.a);
+      ctx.fillStyle=s.color;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fill();
+      ctx.globalAlpha=0.35;
+      ctx.beginPath();
+      ctx.moveTo(s.x,s.y-6);
+      ctx.lineTo(s.x-s.vx*6,s.y-s.vy*6);
+      ctx.strokeStyle=s.color;
+      ctx.lineWidth=0.8;
+      ctx.stroke();
+    }
+    requestAnimationFrame(tick);
+  }
+  const ro=new ResizeObserver(size);
+  ro.observe(parent);
+  requestAnimationFrame(tick);
+}
+document.querySelectorAll('.card-media .stars-rain').forEach(initStars);
 </script>
