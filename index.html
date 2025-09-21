@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/utils.css">
 <link rel="stylesheet" href="css/cursor.css">
 <link rel="stylesheet" href="css/hero.css">
+<script src="js/main.js"></script>
 
 <style>
 
@@ -63,8 +64,10 @@ html{scroll-behavior:smooth}
   border:1px solid rgba(255,255,255,.06);
 }
 .brand{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:999px}
-.brand .logo{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,#22d3ee,#a78bfa);box-shadow:0 6px 18px rgba(99,102,241,.35)}
+.brand .logo{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,#22d3ee,#a78bfa);box-shadow:0 6px 18px rgba(99,102,241,.35); margin-right:14px}
 .brand span{font-weight:800;letter-spacing:-.01em;font-size:18px}
+.brand a{display:flex; flex-direction: row; justify-content: center; align-items: center;}
+.brand a{text-decoration: none; color:white}
 .menu{display:none;gap:12px;align-items:center}
 .menu a{
   text-decoration:none;color:var(--text);opacity:.9;font-weight:600;
@@ -332,7 +335,7 @@ body.light .hamb:hover {
   left: 0;
   width: 28px;
   height: 28px;
-  border: 2px solid #222;
+  border: 2px solid #8f8f8f;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -346,7 +349,7 @@ body.light .hamb:hover {
   left: 0;
   width: 6px;
   height: 6px;
-  background: #222;
+  background: #8f8f8f;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -648,50 +651,74 @@ display:none;
 
 }
 
+.menu-column { display: none; }
+.menu-column.active { display: flex; }
+
+.mennu-mobile{display:none;}
 
 
+.hamb{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);cursor:pointer;gap:4px;padding:10px;transition:transform .2s ease, background .2s ease, border-color .2s ease}
+.hamb span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .3s ease, opacity .2s ease}
+.hamb:active{transform:scale(.98)}
+.hamb[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamb[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamb[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.hamb{color:rgb(224,223,223);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+body.light .hamb{color:#111;border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.04)}
+
+#menu-desktop{display:none}
+@media(min-width:980px){
+  #menu-desktop{display:flex}
+  .hamb{display:none}
+}
+
+.mobile-sheet{position:fixed;top:84px;left:20px;right:20px;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:20px;background:rgba(17,18,19,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);transform:translateY(-8px) scale(.98);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.2,.8,.2,1), opacity .28s ease, box-shadow .28s ease;z-index:60}
+.mobile-sheet a{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:14px;text-decoration:none;color:var(--text);font-weight:700;font-size:15px;letter-spacing:.01em;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);transition:transform .15s ease, background .2s ease, border-color .2s ease}
+.mobile-sheet a:active{transform:translateY(1px)}
+.mobile-sheet a:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.mobile-sheet.active{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+body.light .mobile-sheet{background:rgba(250,250,250,.9);border-color:rgba(0,0,0,.08);box-shadow:0 10px 40px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.8)}
+body.light .mobile-sheet a{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.08);color:#111}
+body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.14)}
 </style>
 </head>
 <body>
     <!--Nuevo Cursor-->
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
+    
 
   <div class="container">
-    <nav class="navbar">
+     <nav class="navbar">
       <div class="brand">
-        <a href ="#inicio">
-          <div class="logo">🧠</div>
-          <span>albertobuenox</span>
-        </a>
+        <a href="#inicio"><div class="logo">🧠</div><span>albertobuenox</span></a>
       </div>
-      <div class="menu" id="menu">
+
+      <div class="menu" id="menu-desktop">
         <a href="#inicio">Inicio</a>
-<!--    <a href="#">Proyectos</a> -->
-<!--    <a href="#">Servicios</a> -->
-<!--    <a href="#">Blog</a> -->
         <a href="#experiencia">Experiencia</a>
       </div>
+
       <div class="actions">
         <a class="social-btn linkedin" href="https://linkedin.com/in/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
         </a>
         <a class="social-btn github" href="https://github.com/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         </a>
         <button class="pill pill-ghost" id="themeToggle" aria-label="Cambiar modo" title="Cambiar modo">
           <span id="themeIcon" aria-hidden="true">🌙</span>
         </button>
-        <a class="pill pill-ghost like" href="#" id="likeBtn" aria-pressed="false"><span class="star" aria-hidden="true">★</span><span id="likeCount">0</span></a>
-        <a class="pill pill-primary" id = "contactar" href="#">Contactar</a>
-        <button class="hamb" id="hamb" aria-label="Abrir menú">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-      </div>
+
+        <button id="menu-toggle" class="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-mobile">
+          <span></span><span></span><span></span>
+        </button>     
+     </div>
+    </nav>
+
+    <nav id="menu-mobile" class="mobile-sheet" aria-label="Menú móvil">
+      <a href="#inicio">Inicio</a>
+      <a href="#experiencia">Experiencia</a>
     </nav>
 
     <!--
@@ -930,69 +957,6 @@ display:none;
     </div>
   </div>
 
-
-
-<script>
-const likeBtn=document.getElementById("likeBtn");
-const likeCount=document.getElementById("likeCount");
-const starEl=likeBtn.querySelector(".star");
-const palette=["#60a5fa","#34d399","#f59e0b","#ef4444","#8b5cf6","#eab308","#22d3ee"];
-
-function confettiBurst(host){
-  const layer=document.createElement("div");
-  layer.className="confetti";
-  host.appendChild(layer);
-  const n=14;
-  for(let i=0;i<n;i++){
-    const p=document.createElement("i");
-    p.textContent="★";
-    const r=()=>Math.random();
-    const dx=(r()*.9+0.2)*(r()<.5?-1:1)*60+"px";
-    const dy=(r()*.9+0.2)*(r()<.5?-1:1)*40+"px";
-    const rot=(r()*360*(r()<.5?-1:1))+"deg";
-    const c=palette[Math.floor(r()*palette.length)];
-    p.style.setProperty("--dx",dx);
-    p.style.setProperty("--dy",dy);
-    p.style.setProperty("--rot",rot);
-    p.style.color=c;
-    p.style.fontSize=(10+Math.floor(r()*6))+"px";
-    layer.appendChild(p);
-  }
-  setTimeout(()=>layer.remove(),950);
-}
-
-async function incrementLike(){
-  const n=parseInt((likeCount.textContent||"0").replace(/\D/g,"")||"0",10)+1;
-  likeCount.textContent=n.toLocaleString("es-ES");
-}
-
-likeBtn.addEventListener("click",async e=>{
-  e.preventDefault();
-  if(likeBtn.getAttribute("aria-pressed")==="true") return;
-  starEl.textContent="⭐"; 
-  starEl.classList.remove("bounce");
-  void starEl.offsetWidth;
-  starEl.classList.add("bounce");
-  confettiBurst(likeBtn);
-  await incrementLike();
-  likeBtn.setAttribute("aria-pressed","true");
-  likeBtn.classList.add("halo");
-  showThankYouBubble();
-});
-
-function showThankYouBubble(){
-  const logo=document.getElementById("brandLogo");
-  if(!logo) return;
-  const host=logo.closest(".brand")||logo.parentElement;
-  const b=document.createElement("div");
-  b.className="bubble";
-  b.textContent="¡Gracias!";
-  host.appendChild(b);
-  setTimeout(()=>b.classList.add("hide"),2300);
-  setTimeout(()=>b.remove(),2700);
-}
-
-</script>
 </body>
 </html>
 
@@ -1023,21 +987,6 @@ document.querySelectorAll('a, button, [role="button"], input, textarea, select, 
 });
 </script>
 
-<script>
-    const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  
-  if (document.body.classList.contains('light')) {
-    themeIcon.textContent = '☀️';
-  } else {
-    themeIcon.textContent = '🌙';
-  }
-});
-
-</script>
 
 
 <script>

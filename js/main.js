@@ -1,43 +1,73 @@
-// main.js
-// Aquí puedes agregar funcionalidades JS en el futuro.
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('themeToggle')
+  const themeIcon = document.getElementById('themeIcon')
+  const clave = 'themeMode'
+  const mql = window.matchMedia('(prefers-color-scheme: dark)')
 
-// Modo oscuro/claro
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-
-function setTheme(mode) {
-  if (mode === 'light') {
-    document.body.classList.remove('dark');
-    document.body.classList.add('light');
-    themeIcon.textContent = '🌙';
-    // Forzar actualización de fondo
-    document.body.style.background = getComputedStyle(document.body).getPropertyValue('--bg');
-  } else {
-    document.body.classList.remove('light');
-    document.body.classList.add('dark');
-    themeIcon.textContent = '☀️';
-    document.body.style.background = getComputedStyle(document.body).getPropertyValue('--bg');
+  function aplicarTema(mode) {
+    const efectivoDark = mode === 'dark' || (mode === 'system' && mql.matches)
+    document.body.classList.toggle('light', !efectivoDark)
+    themeIcon.textContent = efectivoDark ? '🌙' : '☀️'
   }
-  localStorage.setItem('theme', mode);
-}
 
-function toggleTheme() {
-  const current = document.body.classList.contains('dark') ? 'dark' : 'light';
-  setTheme(current === 'dark' ? 'light' : 'dark');
-}
-
-// Inicializar tema
-(function() {
-  const saved = localStorage.getItem('theme');
-  if (saved) {
-    setTheme(saved);
-  } else {
-    // Preferencia del sistema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(prefersDark ? 'dark' : 'light');
+  function obtenerModo() {
+    return localStorage.getItem(clave) || 'system'
   }
-})();
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', toggleTheme);
-}
+  function guardarModo(mode) {
+    localStorage.setItem(clave, mode)
+  }
+
+  function alternarModo() {
+    const actual = obtenerModo()
+    const siguiente = actual === 'system' ? 'light' : actual === 'light' ? 'dark' : 'system'
+    guardarModo(siguiente)
+    aplicarTema(siguiente)
+  }
+
+  mql.addEventListener('change', () => {
+    if (obtenerModo() === 'system') aplicarTema('system')
+  })
+
+  aplicarTema(obtenerModo())
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', alternarModo)
+  }
+
+  const botonMenu = document.getElementById('menu-toggle')
+  const menuMovil = document.getElementById('menu-mobile')
+
+  function cerrarMenu() {
+    menuMovil.classList.remove('active')
+    botonMenu.setAttribute('aria-expanded', 'false')
+  }
+
+  function alternarMenu() {
+    const expandido = botonMenu.getAttribute('aria-expanded') === 'true'
+    menuMovil.classList.toggle('active', !expandido)
+    botonMenu.setAttribute('aria-expanded', String(!expandido))
+  }
+
+  function manejarClickEnlace(e) {
+    if (e.target.closest('a')) cerrarMenu()
+  }
+
+  function manejarClickExterior(e) {
+    if (!menuMovil.contains(e.target) && !botonMenu.contains(e.target)) cerrarMenu()
+  }
+
+  function manejarEscape(e) {
+    if (e.key === 'Escape') cerrarMenu()
+  }
+
+  function inicializarMenuMovil() {
+    if (!botonMenu || !menuMovil) return
+    botonMenu.addEventListener('click', alternarMenu)
+    menuMovil.addEventListener('click', manejarClickEnlace)
+    document.addEventListener('click', manejarClickExterior)
+    document.addEventListener('keydown', manejarEscape)
+  }
+
+  inicializarMenuMovil()
+})
