@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeIcon = document.getElementById('themeIcon')
   const clave = 'themeMode'
   const mql = window.matchMedia('(prefers-color-scheme: dark)')
+  const nav=document.querySelector('.navbar')
+
+  /* Ajustar --nav-h a la altura del nav */
+  function setNavH(){ if(nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight+'px') }
+    setNavH()
+  window.addEventListener('resize', setNavH)
 
   function aplicarTema(mode) {
     const efectivoDark = mode === 'dark' || (mode === 'system' && mql.matches)
