@@ -1,0 +1,53 @@
+{
+  "brand": "albertobuenox",
+  "nav_inicio": "Home",
+  "nav_experiencia": "Experience",
+  "nav_proyectos": "Projects",
+  "nav_servicios": "Services",
+  "nav_blog": "Blog",
+  "hero_title": "I build fast, accessible web products with attention to detail",
+  "hero_desc": "Full-stack developer specialized in high-performance front-end, design systems and DX. Available for select projects and consulting.",
+  "card1_title": "AtlasPay Dashboard",
+  "card1_badge": "FinTech",
+  "card1_desc": "Real-time payment dashboard with WebGL charts, auditing, and workspace-based permissions.",
+  "card1_tags": ["Next.js", "tRPC", "PostgreSQL", "Tailwind"],
+  "btn_project": "View project",
+  "btn_code": "Code",
+  "cv_title": "Professional Experience",
+  "cv_download": "Download CV",
+  "cv_job1_title": "Frontend Developer",
+  "cv_job1_company": "TechFlow Solutions",
+  "cv_job1_duration": "2021 - 2022",
+  "cv_job1_desc": "Developed user interfaces for modern web applications, focusing on reusable components and performance optimization.",
+  "cv_job1_achievements": [
+    "Developed 15+ reusable React components, reducing development time by 40%",
+    "Implemented lazy loading and code splitting, improving initial load time by 60%",
+    "Collaborated on the design of a design token system that unified the visual experience",
+    "Mentored 2 junior developers in frontend best practices"
+  ],
+  "cv_job2_title": "Senior Frontend Developer",
+  "cv_job2_company": "InnovateLab",
+  "cv_job2_duration": "2022 - 2023",
+  "cv_job2_desc": "Led frontend development for complex SaaS products, specializing in UX and working closely with design teams.",
+  "cv_job2_achievements": [
+    "Architected and developed the frontend of a SaaS platform with 50k+ active users",
+    "Implemented an A/B testing system that increased conversions by 25%",
+    "Designed and developed a complete design system with Storybook and documentation",
+    "Collaborated with UX designers in research and usability testing",
+    "Optimized web accessibility, achieving WCAG 2.1 AA compliance"
+  ],
+  "cv_job3_title": "Frontend Lead & UX Specialist",
+  "cv_job3_company": "DigitalCraft Studio",
+  "cv_job3_duration": "2023 - Present",
+  "cv_job3_desc": "Lead frontend development teams while specializing in UX, combining technical skills with user insights to create exceptional products.",
+  "cv_job3_achievements": [
+    "Lead a team of 5 frontend developers on high-impact projects",
+    "Conduct user research and usability testing sessions",
+    "Designed micro-frontend architecture that scaled to 100k+ users",
+    "Implemented UX metrics that improved user satisfaction by 35%",
+    "Created internal workshops on UX/UI for development teams",
+    "Developed interactive prototypes in Figma and Framer for rapid validation"
+  ],
+  "footer": "© 2025 albertobuenox ·",
+  "footer_status": "Open to opportunities"
+}

@@ -1,6 +1,5 @@
-* {
-  cursor: none !important;
-}
+@media(min-width:700px){*{cursor:none !important}}
+
 
 .cursor {
   position: fixed;

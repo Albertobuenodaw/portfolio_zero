@@ -1,0 +1,53 @@
+{
+  "brand": "albertobuenox",
+  "nav_inicio": "Hasiera",
+  "nav_experiencia": "Esperientzia",
+  "nav_proyectos": "Proiektuak",
+  "nav_servicios": "Zerbitzuak",
+  "nav_blog": "Bloga",
+  "hero_title": "Web produktuak eraikitzen ditut azkar, irisgarri eta xehetasunak zainduz",
+  "hero_desc": "Full-stack garatzailea, errendimendu handiko front-end, diseinu sistemak eta DX espezializatua. Proiektu berezietarako eta aholkularitzarako eskuragarri.",
+  "card1_title": "AtlasPay Dashboard",
+  "card1_badge": "FinTech",
+  "card1_desc": "Ordainketa-panel erreala WebGL grafikoekin, auditoretza eta lan-espazioaren arabera baimenak.",
+  "card1_tags": ["Next.js", "tRPC", "PostgreSQL", "Tailwind"],
+  "btn_project": "Ikusi proiektua",
+  "btn_code": "Kodea",
+  "cv_title": "Esperientzia Profesionala",
+  "cv_download": "Deskargatu CV",
+  "cv_job1_title": "Frontend Garatzailea",
+  "cv_job1_company": "TechFlow Solutions",
+  "cv_job1_duration": "2021 - 2022",
+  "cv_job1_desc": "Web aplikazio modernoetarako erabiltzaile-interfazeak garatu, osagai berrerabilgarriak eta errendimenduaren optimizazioa landuz.",
+  "cv_job1_achievements": [
+    "15+ React osagai berrerabilgarri garatu, garapen-denbora %40 murriztuz",
+    "Lazy loading eta code splitting ezarri, hasierako karga-denbora %60 hobetuz",
+    "Diseinu token sistema bateratua diseinatu eta garatu",
+    "2 junior garatzaile gidatu frontend praktika hoberenetan"
+  ],
+  "cv_job2_title": "Senior Frontend Garatzailea",
+  "cv_job2_company": "InnovateLab",
+  "cv_job2_duration": "2022 - 2023",
+  "cv_job2_desc": "SaaS produktu konplexuen frontend garapena gidatu, UX espezializazioa eta diseinu taldeekin lankidetza estua.",
+  "cv_job2_achievements": [
+    "50k+ erabiltzaile aktibo dituen SaaS plataformaren frontend arkitektura eta garapena",
+    "A/B testing sistema ezarri, konbertsioak %25 handituz",
+    "Diseinu sistema osoa diseinatu eta garatu Storybook eta dokumentazioarekin",
+    "UX diseinatzaileekin lankidetzan aritu ikerketa eta erabilgarritasun probetan",
+    "Web irisgarritasuna optimizatu, WCAG 2.1 AA betez"
+  ],
+  "cv_job3_title": "Frontend Lead & UX Espezialista",
+  "cv_job3_company": "DigitalCraft Studio",
+  "cv_job3_duration": "2023 - Orain",
+  "cv_job3_desc": "Frontend garapen taldeak gidatzen ditut UX espezializazioarekin, gaitasun teknikoak eta erabiltzailearen ikuspegia uztartuz produktu bikainak sortzeko.",
+  "cv_job3_achievements": [
+    "5 frontend garatzaileko taldea gidatu proiektu garrantzitsuetan",
+    "Erabiltzaile ikerketa eta erabilgarritasun saioak burutu",
+    "100k+ erabiltzaile eskalatu duen mikro-frontends arkitektura diseinatu",
+    "UX metrikak ezarri, erabiltzailearen gogobetetasuna %35 hobetuz",
+    "Barneko UX/UI tailerrak sortu garapen taldeentzat",
+    "Figma eta Framer-en prototipo interaktiboak garatu balidazio azkarra lortzeko"
+  ],
+  "footer": "© 2025 albertobuenox ·",
+  "footer_status": "Aukera berrien bila"
+}

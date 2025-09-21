@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/cursor.css">
 <link rel="stylesheet" href="css/hero.css">
 <script src="js/main.js"></script>
+<script src="js/lang.js"></script>
 
 <style>
   /* =========================================================
@@ -199,7 +200,7 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
 @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1120px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-.card{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.06);box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08)}
+.card{height:100%;display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.06);box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08)}
 .card-media{position:relative;min-height:170px;background:#0e0f10;border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
 .card-media .stars-rain{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;mix-blend-mode:screen;opacity:.9}
 .card-media::before{
@@ -211,14 +212,14 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
   animation:glow 10s ease-in-out infinite alternate
 }
 @keyframes glow{0%{transform:translateX(-6px)}100%{transform:translateX(6px)}}
-.card-body{padding:28px}
+.card-body{padding:28px; flex: 1; display: flex; flex-direction: column;}
 .card-title{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .card-title h3{margin:0;font-size:22px;font-weight:700}
 .badge{font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#d6d6d6;white-space:nowrap}
 .card p{margin:16px 0 20px;color:var(--muted);line-height:1.6}
 .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
 .tag{font-size:13px;color:#d7d7d7;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);padding:8px 12px;border-radius:999px}
-.card-actions{display:flex;gap:12px;margin-top:20px}
+.card-actions{display:flex;gap:12px;margin-top:auto; padding : 0 28px 28px 28px;}
 .btn{display:inline-flex;align-items:center;gap:12px;cursor:pointer;border-radius:12px;font-weight:700;text-decoration:none;padding:12px 16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);color:var(--text);transition:transform .15s ease, box-shadow .2s ease;font-size:14px}
 .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.4)}
 .btn-primary{position:relative;border:none;background:#0b0b0b;color:#eaeaea}
@@ -238,7 +239,7 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
 /* =========================================================
    12) Cursor personalizado
    ========================================================= */
-*{cursor:none !important}
+@media(min-width:700px){*{cursor:none !important}}
 .cursor{position:fixed;top:0;left:0;width:28px;height:28px;border:2px solid #8f8f8f;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:border-color .2s ease, transform .1s ease;z-index:9999}
 .cursor-dot{position:fixed;top:0;left:0;width:6px;height:6px;background:#8f8f8f;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:background .2s ease;z-index:9999}
 .cursor.active{border-color:#00ffe1cb;transform:translate(-50%,-50%) scale(1.2)}
@@ -293,49 +294,345 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
    15) Ajustes menores de responsive global
    ========================================================= */
 @media(max-width:700px){
-  .navbar{min-width:460px; padding:10px}
-  article{min-width:450px}
+  .navbar{ padding:10px}
+  article{}
+}
+
+/* Elimina o ajusta los min-width problemáticos para mobile */
+@media(max-width:700px){
+  .navbar {
+    /* min-width:460px; */ /* Eliminar para que sea fluido */
+    padding:10px;
+  }
+  article {
+    /* min-width:450px; */ /* Eliminar para que las tarjetas sean responsivas */
+  }
+}
+
+/* Si tienes reglas fuera del media query, también elimina min-width */
+.navbar {
+  /* min-width:460px; */ /* Eliminar */
+}
+article {
+  /* min-width:450px; */ /* Eliminar */
+}
+
+/* Estilo elegante para el selector de idioma tipo Apple */
+#langSwitcher {
+  appearance: none;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 10px 28px 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+  min-width: 70px;
+  position: relative;
+}
+/* 
+#langSwitcher:focus {
+  border-color: #22d3ee;
+  background: rgba(34,211,238,0.08);
+  color: #22d3ee;
+} */
+
+#langSwitcher:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+/* Flecha personalizada tipo Apple */
+#langSwitcher {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23a1a1a1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+
+/* Modo claro */
+body.light #langSwitcher {
+  background: rgba(0,0,0,0.03);
+  color: #111;
+  border-color: rgba(0,0,0,0.12);
+}
+
+/* body.light #langSwitcher:focus {
+  border-color: #22d3ee;
+  background: rgba(34,211,238,0.08);
+  color: #22d3ee;
+} */
+
+body.light #langSwitcher:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+/* Oculta los botones sociales, selector de idioma y tema en nav en mobile */
+@media (max-width: 700px) {
+  .actions .social-btn,
+  .actions #langSwitcher,
+  .actions #themeToggle {
+    display: none !important;
+  }
+  /* Ajusta el nav para que no se desborde */
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 12px 8px;
+  }
+}
+
+/* Muestra los botones sociales dentro del menú móvil */
+@media (max-width: 700px) {
+  #menu-mobile .social-btn {
+    display: inline-flex !important;
+    margin: 8px 0 0 0;
+    justify-content: flex-start;
+  }
+  #menu-mobile {
+    gap: 0;
+  }
+}
+
+/* Menú móvil en dos columnas solo en mobile */
+@media (max-width: 700px) {
+  .cursor, .cursor-dot{
+    display:none !important
+  }
+
+  #menu-mobile {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    align-items: flex-start;
+    padding: 14px;
+  }
+  @media (max-width: 700px) {
+          #menu-mobile .menu-left {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              display: flex;
+              align-items: start;
+              gap: 10px;
+              padding: 14px 16px;
+              border-radius: 14px;
+              text-decoration: none;
+              color: var(--text);
+              font-weight: 700;
+              font-size: 15px;
+              letter-spacing: .01em;
+              background: rgba(255, 255, 255, .02);
+              border: 1px solid rgba(255, 255, 255, .08);
+              transition: transform .15s 
+              ease, background .2s 
+              ease, border-color .2s 
+              ease;
+          }
+      }
+  #menu-mobile .menu-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-width: 90px;
+    padding-left: 18px;
+  }
+  #menu-mobile .social-btn {
+    margin: 8px 0 0 0;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+  #menu-mobile #langSwitcher {
+    margin-left: 0;
+    margin-top: 8px;
+    min-width: 70px;
+  }
+  #menu-mobile #themeToggle {
+    margin-top: 8px;
+  }
+}
+
+/* Oculta los botones sociales, selector de idioma y tema en nav en mobile */
+@media (max-width: 700px) {
+  .actions .social-btn,
+  .actions #langSwitcher,
+  .actions #themeToggle {
+    display: none !important;
+  }
+}
+
+a.linkedin, a.github {
+padding:0 !important;
+
+}
+
+/* Selector de idioma elegante tipo Apple */
+.lang-switcher {
+  appearance: none;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 10px 28px 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+  min-width: 70px;
+  position: relative;
+  background-image: none;
+}
+
+.lang-switcher:focus {
+  border-color: #22d3ee;
+  background: rgba(34,211,238,0.08);
+  color: #22d3ee;
+}
+
+.lang-switcher:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+/* Modo claro para selector */
+body.light .lang-switcher {
+  background: rgba(0,0,0,0.03);
+  color: #111;
+  border-color: rgba(0,0,0,0.12);
+}
+
+body.light .lang-switcher:focus {
+  border-color: #22d3ee;
+  background: rgba(34,211,238,0.08);
+  color: #22d3ee;
+}
+
+body.light .lang-switcher:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+/* Botón modo oscuro/tema */
+.theme-toggle {
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(255,255,255,.02);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,.06);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+body.light .theme-toggle {
+  color: #111;
+  border-color: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.04);
+}
+
+.menu-mobile .inicio, .menu-mobile .experiencia {
+  width: fit-content!important;
+
+}
+
+body.light .theme-toggle:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: #a78bfa;
+  color: #a78bfa;
 }
 </style>
 </head>
 <body>
     <!--Nuevo Cursor-->
     <div class="cursor"></div>
-    <div class="cursor-dot"></div>
-    
+  <div class="cursor-dot"></div>
 
   <div class="container">
-     <nav class="navbar">
-      <div class="brand">
-        <a href="#inicio"><div class="logo">🧠</div><span>albertobuenox</span></a>
-      </div>
+    
+<nav class="navbar">
+  <div class="brand">
+    <a href="#inicio">
+      <div class="logo">🧠</div>
+      <span data-i18n="brand">albertobuenox</span>
+    </a>
+  </div>
 
-      <div class="menu" id="menu-desktop">
-        <a href="#inicio">Inicio</a>
-        <a href="#experiencia">Experiencia</a>
-      </div>
+  <div class="menu" id="menu-desktop">
+    <a href="#inicio" data-i18n="nav_inicio">Inicio</a>
+    <a href="#experiencia" data-i18n="nav_experiencia">Experiencia</a>
+  </div>
 
-      <div class="actions">
-        <a class="social-btn linkedin" href="https://linkedin.com/in/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
-        </a>
-        <a class="social-btn github" href="https://github.com/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <button class="pill pill-ghost" id="themeToggle" aria-label="Cambiar modo" title="Cambiar modo">
-          <span id="themeIcon" aria-hidden="true">🌙</span>
-        </button>
-
-        <button id="menu-toggle" class="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-mobile">
-          <span></span><span></span><span></span>
-        </button>     
-     </div>
-    </nav>
+  <div class="actions">
+    <a class="social-btn linkedin" href="https://linkedin.com/in/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+    </a>
+    <a class="social-btn github" href="https://github.com/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <select id="langSwitcher" style="margin-left:16px;">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="eu">EU</option>
+    </select>
+    <button class="pill pill-ghost" id="themeToggle" aria-label="Cambiar modo" title="Cambiar modo">
+      <span id="themeIcon" aria-hidden="true">🌙</span>
+    </button>
+    <button id="menu-toggle" class="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
     <nav id="menu-mobile" class="mobile-sheet" aria-label="Menú móvil">
-      <a href="#inicio">Inicio</a>
-      <a href="#experiencia">Experiencia</a>
-    </nav>
+  <div class="menu-left">
+    <a href="#inicio" class = "inicio" data-i18n="nav_inicio">Inicio</a>
+    <a href="#experiencia" class = "experiencia" data-i18n="nav_experiencia">Experiencia</a>
+    <a class="social-btn linkedin" href="https://linkedin.com/in/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+    </a>
+    <a class="social-btn github" href="https://github.com/abuenodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+  </div>
+  <div class="menu-right">
+    <button class="pill pill-ghost theme-toggle" aria-label="Cambiar modo" title="Cambiar modo">
+      <span class="theme-icon" aria-hidden="true">🌙</span>
+    </button>
+    <select class="lang-switcher">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="eu">EU</option>
+    </select>
+  </div>
+</nav>
+
 
     <!--
     <section class="hero-avatar" aria-label="Presentación con avatar">
@@ -347,142 +644,39 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
       <div class="hero-avatar">
         <img src="img/abueno_avatar.jpg" alt="albertobuenox - Desarrollador Frontend" class="avatar-img">
       </div>
-      <h1>Construyo productos web rápidos, accesibles y con cariño por los detalles</h1>
-      <p>Desarrollador full-stack especializado en front-end de alto rendimiento, diseño de sistemas y DX. Disponible para proyectos selectos y consultoría.</p>
+      <h1 data-i18n="hero_title">Construyo productos web rápidos, accesibles y con cariño por los detalles</h1>
+      <p data-i18n="hero_desc">Desarrollador full-stack especializado en front-end de alto rendimiento, diseño de sistemas y DX. Disponible para proyectos selectos y consultoría.</p>
     </header>
 
     <!-- Sección de proyectos destacados -->
-    <section class="grid">
-      <!-- Proyecto FinTech - Dashboard de pagos -->
+      <section class="grid">
       <article class="card">
         <div class="card-media">
           <canvas class="stars-rain"></canvas>
         </div>
         <div class="card-body">
           <div class="card-title">
-            <h3>AtlasPay Dashboard</h3>
-            <span class="badge">FinTech</span>
+            <h3 data-i18n="card1_title">AtlasPay Dashboard</h3>
+            <span class="badge" data-i18n="card1_badge">FinTech</span>
           </div>
-          <p>Panel de pagos en tiempo real con gráficos WebGL, auditoría y permisos por espacio de trabajo.</p>
+          <p data-i18n="card1_desc">Panel de pagos en tiempo real con gráficos WebGL, auditoría y permisos por espacio de trabajo.</p>
           <div class="meta">
-            <span class="tag">Next.js</span><span class="tag">tRPC</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind</span>
+            <span class="tag" data-i18n="card1_tags_0">Next.js</span>
+            <span class="tag" data-i18n="card1_tags_1">tRPC</span>
+            <span class="tag" data-i18n="card1_tags_2">PostgreSQL</span>
+            <span class="tag" data-i18n="card1_tags_3">Tailwind</span>
           </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="#" data-i18n="btn_project">Ver proyecto</a>
+          <a class="btn" href="#" data-i18n="btn_code">Código</a>
         </div>
       </article>
-
-
-      <!-- Proyecto IA - Suite de agentes -->
-      <article class="card">
-          <div class="card-media">
-          <canvas class="stars-rain"></canvas>
-        </div>        <div class="card-body">
-          <div class="card-title">
-            <h3>Hikari AI Studio</h3>
-            <span class="badge">IA</span>
-          </div>
-          <p>Suite de orquestación de agentes con chat multimodal, herramientas MCP y flujos automáticos.</p>
-          <div class="meta">
-            <span class="tag">Vite</span><span class="tag">OpenAI</span><span class="tag">MCP</span><span class="tag">Prisma</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Proyecto CMS - Headless con edición in situ -->
-      <article class="card">
-        <div class="card-media">
-          <canvas class="stars-rain"></canvas>
-        </div>
-        <div class="card-body">
-          <div class="card-title">
-            <h3>Voyager CMS</h3>
-            <span class="badge">Producto</span>
-          </div>
-          <p>Headless CMS con edición in situ, roles granulares y API en streaming para vista previa instantánea.</p>
-          <div class="meta">
-            <span class="tag">Remix</span><span class="tag">Edge</span><span class="tag">Redis</span><span class="tag">TypeScript</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Proyecto Design System - Sistema de diseño -->
-      <!--
-      <article class="card">
-        <div class="card-media"></div>
-        <div class="card-body">
-          <div class="card-title">
-            <h3>Mercurio Design System</h3>
-            <span class="badge">UI/UX</span>
-          </div>
-          <p>Sistema de diseño multiplataforma con tokens, theming dinámico y componentes accesibles.</p>
-          <div class="meta">
-            <span class="tag">Storybook</span><span class="tag">Radix</span><span class="tag">CSS Vars</span><span class="tag">ARIA</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
-        </div>
-      </article>
-      -->
-
-      <!-- Proyecto eCommerce - Plataforma headless -->
-      <!--
-      <article class="card">
-        <div class="card-media"></div>
-        <div class="card-body">
-          <div class="card-title">
-            <h3>Orbit Commerce</h3>
-            <span class="badge">eCommerce</span>
-          </div>
-          <p>Plataforma headless con catálogo en tiempo real, búsqueda semántica y checkout en una página.</p>
-          <div class="meta">
-            <span class="tag">Nuxt</span><span class="tag">Elastic</span><span class="tag">Stripe</span><span class="tag">Workers</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
-        </div>
-      </article>
-      -->
-
-      <!-- Proyecto Analytics - Dashboards de datos -->
-      <!--
-      <article class="card">
-        <div class="card-media"></div>
-        <div class="card-body">
-          <div class="card-title">
-            <h3>Lyra Analytics</h3>
-            <span class="badge">Data</span>
-          </div>
-          <p>Analítica privacy-first con ETL ligero, dashboards componibles y alertas basadas en anomalías.</p>
-          <div class="meta">
-            <span class="tag">SvelteKit</span><span class="tag">DuckDB</span><span class="tag">WebSockets</span><span class="tag">Cloudflare</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-primary" href="#">Ver proyecto</a>
-            <a class="btn" href="#">Código</a>
-          </div>
-        </div>
-      </article>
-      -->
     </section>
 
     <!-- Sección de currículum profesional -->
     <section class="cv-section" id="experiencia">
-      <h2>Experiencia Profesional 
+      <h2 data-i18n="cv_title">Experiencia Profesional 
         <a href="#" class="download-icon" aria-label="Descargar CV" title="Descargar CV">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -491,80 +685,73 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
           </svg>
         </a>
       </h2>
-      <div class="timeline">
-        <!-- Primer trabajo - Frontend Developer -->
+       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-title">Frontend Developer</h3>
-                <p class="timeline-company">TechFlow Solutions</p>
+                <h3 class="timeline-title" data-i18n="cv_job1_title">Frontend Developer</h3>
+                <p class="timeline-company" data-i18n="cv_job1_company">TechFlow Solutions</p>
               </div>
-              <span class="timeline-duration">2021 - 2022</span>
+              <span class="timeline-duration" data-i18n="cv_job1_duration">2021 - 2022</span>
             </div>
-            <p class="timeline-description">
-              Desarrollo de interfaces de usuario para aplicaciones web modernas, enfocándome en la creación de componentes reutilizables y la optimización del rendimiento.
-            </p>
+            <p class="timeline-description" data-i18n="cv_job1_desc">Desarrollo de interfaces de usuario...</p>
             <ul class="timeline-achievements">
-              <li>Desarrollé 15+ componentes React reutilizables que redujeron el tiempo de desarrollo en 40%</li>
-              <li>Implementé lazy loading y code splitting, mejorando el tiempo de carga inicial en 60%</li>
-              <li>Colaboré en el diseño de un sistema de design tokens que unificó la experiencia visual</li>
-              <li>Mentoré a 2 desarrolladores junior en mejores prácticas de frontend</li>
+              <li data-i18n="cv_job1_achievements_0">Desarrollé 15+ componentes...</li>
+              <li data-i18n="cv_job1_achievements_1">Implementé lazy loading...</li>
+              <li data-i18n="cv_job1_achievements_2">Colaboré en el diseño...</li>
+              <li data-i18n="cv_job1_achievements_3">Mentoré a 2 desarrolladores...</li>
             </ul>
           </div>
         </div>
 
-        <!-- Segundo trabajo - Senior Frontend Developer -->
-        <div class="timeline-item">
+           <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-title">Senior Frontend Developer</h3>
-                <p class="timeline-company">InnovateLab</p>
+                <h3 class="timeline-title" data-i18n="cv_job2_title">Senior Frontend Developer</h3>
+                <p class="timeline-company" data-i18n="cv_job2_company">InnovateLab</p>
               </div>
-              <span class="timeline-duration">2022 - 2023</span>
+              <span class="timeline-duration" data-i18n="cv_job2_duration">2022 - 2023</span>
             </div>
-            <p class="timeline-description">
-              Lideré el desarrollo frontend de productos SaaS complejos, comenzando a especializarme en UX y trabajando estrechamente con equipos de diseño.
-            </p>
+            <p class="timeline-description" data-i18n="cv_job2_desc">Lideré el desarrollo frontend...</p>
             <ul class="timeline-achievements">
-              <li>Arquitecturé y desarrollé el frontend de una plataforma SaaS con 50k+ usuarios activos</li>
-              <li>Implementé un sistema de A/B testing que aumentó las conversiones en 25%</li>
-              <li>Diseñé y desarrollé un design system completo con Storybook y documentación</li>
-              <li>Colaboré con UX designers en research y testing de usabilidad</li>
-              <li>Optimicé la accesibilidad web, alcanzando WCAG 2.1 AA compliance</li>
+              <li data-i18n="cv_job2_achievements_0">Arquitecturé y desarrollé...</li>
+              <li data-i18n="cv_job2_achievements_1">Implementé un sistema de A/B testing...</li>
+              <li data-i18n="cv_job2_achievements_2">Diseñé y desarrollé un design system...</li>
+              <li data-i18n="cv_job2_achievements_3">Colaboré con UX designers...</li>
+              <li data-i18n="cv_job2_achievements_4">Optimicé la accesibilidad...</li>
             </ul>
           </div>
         </div>
 
-        <!-- Tercer trabajo - Frontend Lead & UX Specialist -->
-        <div class="timeline-item">
+       <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-title">Frontend Lead & UX Specialist</h3>
-                <p class="timeline-company">DigitalCraft Studio</p>
+                <h3 class="timeline-title" data-i18n="cv_job3_title">Frontend Lead & UX Specialist</h3>
+                <p class="timeline-company" data-i18n="cv_job3_company">DigitalCraft Studio</p>
               </div>
-              <span class="timeline-duration">2023 - Presente</span>
+              <span class="timeline-duration" data-i18n="cv_job3_duration">2023 - Presente</span>
             </div>
-            <p class="timeline-description">
-              Lidero equipos de desarrollo frontend mientras me especializo en UX, combinando habilidades técnicas con insights de usuario para crear productos excepcionales.
-            </p>
+            <p class="timeline-description" data-i18n="cv_job3_desc">Lidero equipos de desarrollo...</p>
             <ul class="timeline-achievements">
-              <li>Lidero un equipo de 5 desarrolladores frontend en proyectos de alto impacto</li>
-              <li>Conduzco sesiones de user research y testing de usabilidad</li>
-              <li>Diseñé la arquitectura de micro-frontends que escaló a 100k+ usuarios</li>
-              <li>Implementé métricas de UX que mejoraron la satisfacción del usuario en 35%</li>
-              <li>Creé workshops internos sobre UX/UI para equipos de desarrollo</li>
-              <li>Desarrollé prototipos interactivos en Figma y Framer para validación rápida</li>
+              <li data-i18n="cv_job3_achievements_0">Lidero un equipo de 5 desarrolladores...</li>
+              <li data-i18n="cv_job3_achievements_1">Conduzco sesiones de user research...</li>
+              <li data-i18n="cv_job3_achievements_2">Diseñé la arquitectura de micro-frontends...</li>
+              <li data-i18n="cv_job3_achievements_3">Implementé métricas de UX...</li>
+              <li data-i18n="cv_job3_achievements_4">Creé workshops internos...</li>
+              <li data-i18n="cv_job3_achievements_5">Desarrollé prototipos interactivos...</li>
             </ul>
           </div>
         </div>
       </div>
+
     </section>
 
-    <footer class="footer">
-      © 2025 albertobuenox · <span class="rainbow-text">En búsqueda activa</span>
+   <footer class="footer">
+      <span data-i18n="footer">© 2025 albertobuenox ·</span>
+      <span class="rainbow-text" data-i18n="footer_status">En búsqueda activa</span>
     </footer>
 
     <div class="mobile" id="mobileMenu" style="display: none;">
@@ -607,7 +794,7 @@ document.querySelectorAll('a, button, [role="button"], input, textarea, select, 
 </script>
 
 
-
+<!-- Animación de lluvia de estrellas en tarjetas de proyectos -->
 <script>
 const dpr=window.devicePixelRatio||1;
 function initStars(canvas){

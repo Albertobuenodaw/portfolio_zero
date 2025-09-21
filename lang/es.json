@@ -1,0 +1,53 @@
+{
+  "brand": "albertobuenox",
+  "nav_inicio": "Inicio",
+  "nav_experiencia": "Experiencia",
+  "nav_proyectos": "Proyectos",
+  "nav_servicios": "Servicios",
+  "nav_blog": "Blog",
+  "hero_title": "Construyo productos web rápidos, accesibles y con cariño por los detalles",
+  "hero_desc": "Desarrollador full-stack especializado en front-end de alto rendimiento, diseño de sistemas y DX. Disponible para proyectos selectos y consultoría.",
+  "card1_title": "AtlasPay Dashboard",
+  "card1_badge": "FinTech",
+  "card1_desc": "Panel de pagos en tiempo real con gráficos WebGL, auditoría y permisos por espacio de trabajo.",
+  "card1_tags": ["Next.js", "tRPC", "PostgreSQL", "Tailwind"],
+  "btn_project": "Ver proyecto",
+  "btn_code": "Código",
+  "cv_title": "Experiencia Profesional",
+  "cv_download": "Descargar CV",
+  "cv_job1_title": "Frontend Developer",
+  "cv_job1_company": "TechFlow Solutions",
+  "cv_job1_duration": "2021 - 2022",
+  "cv_job1_desc": "Desarrollo de interfaces de usuario para aplicaciones web modernas, enfocándome en la creación de componentes reutilizables y la optimización del rendimiento.",
+  "cv_job1_achievements": [
+    "Desarrollé 15+ componentes React reutilizables que redujeron el tiempo de desarrollo en 40%",
+    "Implementé lazy loading y code splitting, mejorando el tiempo de carga inicial en 60%",
+    "Colaboré en el diseño de un sistema de design tokens que unificó la experiencia visual",
+    "Mentoré a 2 desarrolladores junior en mejores prácticas de frontend"
+  ],
+  "cv_job2_title": "Senior Frontend Developer",
+  "cv_job2_company": "InnovateLab",
+  "cv_job2_duration": "2022 - 2023",
+  "cv_job2_desc": "Lideré el desarrollo frontend de productos SaaS complejos, comenzando a especializarme en UX y trabajando estrechamente con equipos de diseño.",
+  "cv_job2_achievements": [
+    "Arquitecturé y desarrollé el frontend de una plataforma SaaS con 50k+ usuarios activos",
+    "Implementé un sistema de A/B testing que aumentó las conversiones en 25%",
+    "Diseñé y desarrollé un design system completo con Storybook y documentación",
+    "Colaboré con UX designers en research y testing de usabilidad",
+    "Optimicé la accesibilidad web, alcanzando WCAG 2.1 AA compliance"
+  ],
+  "cv_job3_title": "Frontend Lead & UX Specialist",
+  "cv_job3_company": "DigitalCraft Studio",
+  "cv_job3_duration": "2023 - Presente",
+  "cv_job3_desc": "Lidero equipos de desarrollo frontend mientras me especializo en UX, combinando habilidades técnicas con insights de usuario para crear productos excepcionales.",
+  "cv_job3_achievements": [
+    "Lidero un equipo de 5 desarrolladores frontend en proyectos de alto impacto",
+    "Conduzco sesiones de user research y testing de usabilidad",
+    "Diseñé la arquitectura de micro-frontends que escaló a 100k+ usuarios",
+    "Implementé métricas de UX que mejoraron la satisfacción del usuario en 35%",
+    "Creé workshops internos sobre UX/UI para equipos de desarrollo",
+    "Desarrollé prototipos interactivos en Figma y Framer para validación rápida"
+  ],
+  "footer": "© 2025 albertobuenox ·",
+  "footer_status": "En búsqueda activa"
+}
