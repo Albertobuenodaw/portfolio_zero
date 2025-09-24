@@ -15,9 +15,7 @@
 <link rel="stylesheet" href="css/hero.css">
 <script src="js/main.js"></script>
 <script src="js/lang.js"></script>
-
 <style>
-
 
   /* =========================================================
    1) Design tokens (variables) y modos
@@ -182,12 +180,12 @@ body.light .hamb{color:#111;border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.
 
 /* Variante clara del sheet */
 body.light .mobile-sheet{
-  background:rgba(250,250,250,.9);
-  border-color:rgba(0,0,0,.08);
-  box-shadow:0 10px 40px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.8)
+    background:rgba(250,250,250,.9);
+    border-color:rgba(0,0,0,.08);
+    box-shadow:0 10px 40px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.8)
 }
 body.light .mobile-sheet a{
-  background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.08);color:#111
+	background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.08);color:#111
 }
 body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.14)}
 
@@ -272,7 +270,8 @@ body.light .mobile-sheet a:hover{background:rgba(0,0,0,.06);border-color:rgba(0,
 .timeline-content:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.12)}
 .timeline-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:16px}
 .timeline-title{font-size:22px;font-weight:700;margin:0;color:var(--text)}
-.timeline-company{font-size:18px;font-weight:600;color:#22d3ee;margin:0}
+/* .timeline-company{font-size:18px;font-weight:600;color:#22d3ee;margin:0} */
+.timeline-company{font-size:18px;font-weight:300;color:#8e8e8e;margin-top:8px;}
 .timeline-duration{font-size:14px;color:var(--muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
 .timeline-description{color:var(--muted);line-height:1.7;margin-bottom:20px;font-size:16px}
 .timeline-achievements{list-style:none;padding:0;margin:0}
@@ -588,6 +587,24 @@ body.light .theme-toggle:hover {
       min-width: 40%;;
     }
 }
+
+.timeline-tech {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: rgba(201, 201, 201, 0.1);
+  border: 1px solid #dcdcdc86;
+  color:  #b5b5b586;;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
 </style>
 </head>
 <body>
@@ -755,65 +772,115 @@ body.light .theme-toggle:hover {
         </a>
       </h2>
        <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title" data-i18n="cv_job1_title">Frontend Developer</h3>
-                <p class="timeline-company" data-i18n="cv_job1_company">TechFlow Solutions</p>
-              </div>
-              <span class="timeline-duration" data-i18n="cv_job1_duration">2021 - 2022</span>
-            </div>
-            <p class="timeline-description" data-i18n="cv_job1_desc">Desarrollo de interfaces de usuario...</p>
-            <ul class="timeline-achievements">
-              <li data-i18n="cv_job1_achievements_0">Desarrollé 15+ componentes...</li>
-              <li data-i18n="cv_job1_achievements_1">Implementé lazy loading...</li>
-              <li data-i18n="cv_job1_achievements_2">Colaboré en el diseño...</li>
-              <li data-i18n="cv_job1_achievements_3">Mentoré a 2 desarrolladores...</li>
-            </ul>
-          </div>
-        </div>
+				<div class="timeline-item">
+				<div class="timeline-content">
+					<div class="timeline-header">
+					<div>
+						<h3 class="timeline-title">Software Developer · Front-end · UX/UI Specialist</h3>
+						<p class="timeline-company">Departamento Desarrollo · LaSalle Loiola</p>
+					</div>
+					<span class="timeline-duration" style="color:#00ffff">2024 — Actualidad</span>
+					</div>
 
-           <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title" data-i18n="cv_job2_title">Senior Frontend Developer</h3>
-                <p class="timeline-company" data-i18n="cv_job2_company">InnovateLab</p>
-              </div>
-              <span class="timeline-duration" data-i18n="cv_job2_duration">2022 - 2023</span>
-            </div>
-            <p class="timeline-description" data-i18n="cv_job2_desc">Lideré el desarrollo frontend...</p>
-            <ul class="timeline-achievements">
-              <li data-i18n="cv_job2_achievements_0">Arquitecturé y desarrollé...</li>
-              <li data-i18n="cv_job2_achievements_1">Implementé un sistema de A/B testing...</li>
-              <li data-i18n="cv_job2_achievements_2">Diseñé y desarrollé un design system...</li>
-              <li data-i18n="cv_job2_achievements_3">Colaboré con UX designers...</li>
-              <li data-i18n="cv_job2_achievements_4">Optimicé la accesibilidad...</li>
-            </ul>
-          </div>
-        </div>
+					<p class="timeline-description">
+					Creación de interfaces accesibles y eficientes con enfoque en usabilidad y rendimiento.
+					Implementación de soluciones visuales innovadoras y colaboración en entornos ágiles
+					aplicando buenas prácticas de código y versionado.
+					</p>
+
+					<ul class="timeline-achievements">
+					<li>Mejoré la experiencia de usuario con menús “liquid glass” y microinteracciones.</li>
+					<li>Diseñé utilidades visuales con indicadores y códigos de color que redujeron tiempos de búsqueda.</li>
+					<li>Aseguré mantenibilidad aplicando accesibilidad, principios DRY/KISS y control de versiones.</li>
+					</ul>
+
+					<div class="timeline-tech">
+					<span class="chip">HTML</span>
+					<span class="chip">CSS</span>
+					<span class="chip">JavaScript (vanilla)</span>
+					<span class="chip">PHP</span>
+					<span class="chip">MySQL</span>
+					<span class="chip">VS Code</span>
+					<span class="chip">Cursor</span>
+					<span class="chip">GitHub Copilot</span>
+					<span class="chip">Agile / Scrum</span>
+					<span class="chip">Flex</span>
+					<span class="chip">Lean UX</span>
+					<div class="chip">Microinteracciones</div>
+					<div class="chip">Atomic Design</div>
+
+					</div>
+				</div>
+			</div>
+      <div class="timeline-item">
+				<div class="timeline-content">
+					<div class="timeline-header">
+					<div>
+						<h3 class="timeline-title">QA Automation Tester</h3>
+						<p class="timeline-company">Datik · Contrato de prácticas · Donostia</p>
+					</div>
+					<span class="timeline-duration" style="color:#929292">2023</span>
+					</div>
+
+					<p class="timeline-description">
+					Experiencia en automatización de pruebas de software y aseguramiento de calidad,
+					contribuyendo a mejorar la eficiencia de los procesos de validación y la comunicación con el equipo de desarrollo
+					bajo metodologías ágiles.
+					</p>
+
+					<ul class="timeline-achievements">
+					<li>Automatización de casos de prueba críticos con Selenium IDE y WebDriver, reduciendo tiempos de ejecución manual.</li>
+					<li>Diseño y documentación de más de 100 Test Cases en JIRA y hojas de cálculo, garantizando trazabilidad y cobertura.</li>
+					<li>Detección y reporte efectivo de bugs, facilitando su rápida resolución por parte del equipo de desarrollo.</li>
+					<li>Colaboración en pair testing y validación de APIs con Postman, fortaleciendo la calidad del producto final.</li>
+					<li>Uso avanzado de CSS Selectors y XPath con DevTools para localizar y validar elementos en navegadores.</li>
+					</ul>
+
+					<div class="timeline-tech">
+					<span class="chip">Selenium IDE</span>
+					<span class="chip">Selenium WebDriver</span>
+					<span class="chip">JIRA</span>
+					<span class="chip">Postman</span>
+					<span class="chip">CSS Selectors</span>
+					<span class="chip">XPath</span>
+					<span class="chip">DevTools</span>
+					<span class="chip">Agile</span>
+					<span class="chip">Scrum</span>
+					</div>
+				</div>
+			</div>
 
        <div class="timeline-item">
           <div class="timeline-content">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-title" data-i18n="cv_job3_title">Frontend Lead & UX Specialist</h3>
-                <p class="timeline-company" data-i18n="cv_job3_company">DigitalCraft Studio</p>
+                <h3 class="timeline-title">Desarrollador Backend</h3>
+                <p class="timeline-company">Ibermática · Formación dual </p>
               </div>
-              <span class="timeline-duration" data-i18n="cv_job3_duration">2023 - Presente</span>
+              <span class="timeline-duration" style="color:#929292">mar. 2023 — jun. 2023 </span>
             </div>
-            <p class="timeline-description" data-i18n="cv_job3_desc">Lidero equipos de desarrollo...</p>
+
+            <p class="timeline-description">
+              Experiencia en desarrollo backend, combinando formación práctica con la creación de soluciones internas
+              y el aprendizaje de frameworks modernos para entornos empresariales.
+            </p>
+
             <ul class="timeline-achievements">
-              <li data-i18n="cv_job3_achievements_0">Lidero un equipo de 5 desarrolladores...</li>
-              <li data-i18n="cv_job3_achievements_1">Conduzco sesiones de user research...</li>
-              <li data-i18n="cv_job3_achievements_2">Diseñé la arquitectura de micro-frontends...</li>
-              <li data-i18n="cv_job3_achievements_3">Implementé métricas de UX...</li>
-              <li data-i18n="cv_job3_achievements_4">Creé workshops internos...</li>
-              <li data-i18n="cv_job3_achievements_5">Desarrollé prototipos interactivos...</li>
+              <li>Diseño e implementación de herramienta interna de documentación basada en Markdown Open Source.</li>
+              <li>Despliegue y configuración de la aplicación en servidor propio, asegurando disponibilidad y uso interno.</li>
+              <li>Formación y prácticas en el ecosistema Spring con Maven para la construcción de aplicaciones backend escalables.</li>
             </ul>
+
+            <div class="timeline-tech">
+              <span class="chip">Markdown</span>
+              <span class="chip">Spring</span>
+              <span class="chip">Maven</span>
+              <span class="chip">Server Deployment</span>
+              <span class="chip">Backend Development</span>
+            </div>
           </div>
-        </div>
+      </div>
+
       </div>
 
     </section>
@@ -834,7 +901,6 @@ body.light .theme-toggle:hover {
 
 </body>
 </html>
-
 
 
 <!--Transformación de cursor-->
