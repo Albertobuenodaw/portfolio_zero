@@ -17,6 +17,8 @@
 <script src="js/lang.js"></script>
 
 <style>
+
+
   /* =========================================================
    1) Design tokens (variables) y modos
    ========================================================= */
@@ -142,6 +144,12 @@ body.light .hamb{color:#111;border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.
 @media(min-width:980px){ #menu-desktop{display:flex} .hamb{display:none} }
 @media(max-width:1200px){ .menu{display:none} .hamb{display:inline-flex} }
 
+@media (min-width: 700px) and (max-width: 980px) {
+  #menu-mobile .social-btn , .menu-right{
+    display: none !important;
+  }
+}
+
 /* =========================================================
    8) Menú móvil (sheet)  — FIX incluido
    ========================================================= */
@@ -169,6 +177,7 @@ body.light .hamb{color:#111;border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.
 }
 .mobile-sheet a:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
 .mobile-sheet a:active{transform:translateY(1px)}
+.mobile-sheet a{margin-top:10px}
 .mobile-sheet.active{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
 
 /* Variante clara del sheet */
@@ -343,7 +352,7 @@ article {
 } */
 
 #langSwitcher:hover {
-  background: rgba(255,255,255,0.09);
+  /* background: rgba(255,255,255,0.09); */
   border-color: #a78bfa;
   color: #a78bfa;
 }
@@ -566,6 +575,18 @@ body.light .theme-toggle:hover {
   background: rgba(0,0,0,0.08);
   border-color: #a78bfa;
   color: #a78bfa;
+}
+
+@media (max-width: 700px) {
+  .lang-switcher, .theme-toggle {
+    margin:0 !important;
+    width: 100% !important;
+    height:47px !important;
+    }
+
+    .menu-left .inicio, .experiencia{
+      min-width: 40%;;
+    }
 }
 </style>
 </head>
