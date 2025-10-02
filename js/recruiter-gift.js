@@ -40,59 +40,24 @@
     stylesEl = document.createElement('style');
     stylesEl.setAttribute('data-recruiter-gift', 'css');
     stylesEl.textContent = `
-      @keyframes rg-fall { 
-        0% { transform: translateY(-10vh) rotate(0deg); opacity: 0 } 
-        10% { opacity: 1 } 
-        100% { transform: translateY(110vh) rotate(360deg); opacity: 0 } 
-      }
-      @keyframes rg-pop {
-        0% { transform: scale(.9); opacity: 0 }
-        60% { transform: scale(1.02); opacity: 1 }
-        100% { transform: scale(1) }
-      }
-      .rg-mode .brand .logo,
-      .rg-mode .brand span,
-      .rg-mode .timeline-title,
-      .rg-mode .footer {
-        text-shadow: 0 0 20px rgba(162,132,255,.25), 0 0 40px rgba(45,212,191,.18);
-        filter: saturate(1.1);
-      }
-      .rg-toast {
-        position: fixed; inset: auto 20px 20px auto;
-        display: inline-flex; align-items: center; gap: 12px;
-        padding: 14px 16px; border-radius: 14px;
-        background: rgba(17,18,19,.85); color: #eaeaea;
-        border: 1px solid rgba(255,255,255,.12);
-        box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
-        backdrop-filter: blur(10px);
-        font: 600 14px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue";
-        z-index: 99999;
-        animation: rg-pop .32s ease;
-      }
-      .rg-toast b { font-weight: 800 }
-      .rg-btn {
-        cursor: pointer; border: 1px solid rgba(255,255,255,.15);
-        background: rgba(255,255,255,.06); color: #eaeaea;
-        border-radius: 10px; padding: 8px 12px; font-weight: 700;
-      }
-      .rg-btn:hover { background: rgba(255,255,255,.12) }
-      .rg-confetti {
-        pointer-events: none; position: fixed; inset: 0; overflow: hidden; z-index: 99998;
-      }
-      .rg-piece {
-        position: absolute; top: -10vh;
-        will-change: transform, opacity;
-        font-size: clamp(14px, 2.8vw, 28px);
-      }
-      .recruiter-easter-egg::after {
-        content: "You found the Easter Egg. Let’s build something great 🚀";
-        display: inline-block; margin-left: 8px; font-size: 12px; opacity: .7;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .rg-piece { animation: none !important }
-        .rg-toast { animation: none !important }
-      }
-    `;
+  @keyframes rg-fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+  @keyframes rg-pop{0%{transform:scale(.9);opacity:0}60%{transform:scale(1.02);opacity:1}100%{transform:scale(1)}}
+  .rg-mode .brand span,
+  .rg-mode .timeline-title,
+  .rg-mode .footer{
+    text-shadow:0 0 20px rgba(162,132,255,.25),0 0 40px rgba(45,212,191,.18);
+    filter:saturate(1.1);
+  }
+  .rg-toast{position:fixed;inset:auto 20px 20px auto;display:inline-flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;background:rgba(17,18,19,.85);color:#eaeaea;border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(10px);font:600 14px/1.2 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue";z-index:99999;animation:rg-pop .32s ease}
+  .rg-toast b{font-weight:800}
+  .rg-btn{cursor:pointer;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaeaea;border-radius:10px;padding:8px 12px;font-weight:700}
+  .rg-btn:hover{background:rgba(255,255,255,.12)}
+  .rg-confetti{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:99998}
+  .rg-piece{position:absolute;top:-10vh;will-change:transform,opacity;font-size:clamp(14px,2.8vw,28px)}
+  .recruiter-easter-egg::after{content:"You found the Easter Egg. Let’s build something great 🚀";display:inline-block;margin-left:8px;font-size:12px;opacity:.7}
+  @media (prefers-reduced-motion:reduce){.rg-piece{animation:none!important}.rg-toast{animation:none!important}}
+`;
+
     document.head.appendChild(stylesEl);
   };
 
@@ -102,7 +67,7 @@
     toastEl.className = 'rg-toast';
     toastEl.innerHTML = `
       <span>↑ ↑ ↓ ↓ ← → ← → B A — <b>Nice find</b> 👾</span>
-      <button class="rg-btn" data-action="toggle">Toggle</button>
+      <button class="rg-btn" data-action="toggle">Turn Off</button>
       <button class="rg-btn" data-action="close">Close</button>
     `;
     toastEl.addEventListener('click', (e) => {
@@ -110,7 +75,7 @@
       if (!btn) return;
       const action = btn.getAttribute('data-action');
       if (action === 'toggle') toggle();
-      if (action === 'close') deactivate();
+      if (action === 'close') deactivate(false);
     });
     document.body.appendChild(toastEl);
   };
@@ -158,17 +123,25 @@
     applyMark(true);
     makeToast();
     confetti(true);
+    if (toastEl) {
+      const tBtn = toastEl.querySelector('[data-action="toggle"]');
+      if (tBtn) tBtn.textContent = 'Turn Off';
+    }
   };
 
-  const deactivate = () => {
+  const deactivate = (keepToast = false) => {
     active = false;
     document.documentElement.classList.remove('rg-mode');
     applyMark(false);
-    if (toastEl) { toastEl.remove(); toastEl = null; }
     confetti(false);
+    if (!keepToast && toastEl) { toastEl.remove(); toastEl = null; }
+    if (toastEl) {
+      const tBtn = toastEl.querySelector('[data-action="toggle"]');
+      if (tBtn) tBtn.textContent = 'Turn On';
+    }
   };
 
-  const toggle = () => active ? deactivate() : activate();
+const toggle = () => active ? deactivate(true) : activate();
 
   window.addEventListener('keydown', (e) => {
     BUF.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
